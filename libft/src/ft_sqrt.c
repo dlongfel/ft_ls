@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
+/*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:54:54 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:54:55 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/10/14 15:37:21 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:37:21 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

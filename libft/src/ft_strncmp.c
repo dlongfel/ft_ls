@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
+/*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:56:21 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:56:22 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/10/14 15:38:37 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:38:38 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

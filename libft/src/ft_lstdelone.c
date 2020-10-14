@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
+/*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:53:16 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:53:16 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/10/14 15:35:29 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:35:30 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

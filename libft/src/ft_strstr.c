@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
+/*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:56:55 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:56:56 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/10/14 15:39:11 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:39:12 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
