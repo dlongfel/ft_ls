@@ -3,71 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cotis <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 18:59:20 by cotis             #+#    #+#             */
-/*   Updated: 2019/09/26 19:07:50 by cotis            ###   ########.fr       */
+/*   Created: 2020/07/03 13:56:51 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:56:52 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int				ft_cntw(char const *s, char c)
+static size_t	ft_s(char const *s, char c)
 {
-	unsigned int		i;
-	int					cntr;
+	size_t i;
 
 	i = 0;
-	cntr = 0;
-	while (s[i])
+	while (*s)
 	{
-		while (s[i] == c)
+		if ((*s != c && *(s + 1) == c) || (*s != c && *(s + 1) == '\0'))
 			i++;
-		if (s[i] != '\0')
-			cntr++;
-		while (s[i] && (s[i] != c))
-			i++;
+		s++;
 	}
-	return (cntr);
+	return (i);
 }
 
-static char				*ft_strndup(const char *s, size_t n)
+static size_t	sizechr(const char *ch, char c)
 {
-	char	*str;
-
-	str = (char *)malloc(sizeof(char) * n + 1);
-	if (str == NULL)
-		return (NULL);
-	str = ft_strncpy(str, s, n);
-	str[n] = '\0';
-	return (str);
-}
-
-char					**ft_strsplit(char const *s, char c)
-{
-	int					i;
-	int					j;
-	int					k;
-	char				**tab;
+	size_t i;
 
 	i = 0;
-	k = 0;
-	if (!s)
-		return (NULL);
-	tab = (char **)malloc(sizeof(char *) * (ft_cntw(s, c)) + 1);
-	if (tab == NULL)
-		return (NULL);
-	while (s[i])
+	while (ch[i] && ch[i] != c)
+		i++;
+	return (i);
+}
+
+static void		arrclear(char **ch)
+{
+	while (*ch)
+		free(*ch++);
+	free(ch);
+}
+
+static char		**splitc(const char *s, char c, size_t count, char **ch)
+{
+	size_t		size;
+	int			x;
+	size_t		i;
+
+	x = 0;
+	i = 0;
+	while (count > 0)
 	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (i > j)
-			tab[k++] = ft_strndup(s + j, i - j);
+		if (s[i] != c && count--)
+		{
+			size = sizechr(&s[i], c);
+			if (!(ch[x++] = ft_strsub(s, i, size)))
+			{
+				arrclear(ch);
+				return (NULL);
+			}
+			i += size;
+		}
+		i++;
 	}
-	tab[k] = NULL;
-	return (tab);
+	ch[x] = NULL;
+	return (ch);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char		**ch;
+	size_t		count;
+
+	if (!s || !(ch = (char **)malloc((sizeof(char *) * ft_s(s, c)) + 1)))
+		return (NULL);
+	count = ft_s(s, c);
+	if (count > count + 1)
+		return (NULL);
+	ch = splitc(s, c, count, ch);
+	return (ch);
 }

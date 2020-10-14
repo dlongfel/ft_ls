@@ -3,52 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cotis <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 17:09:02 by cotis             #+#    #+#             */
-/*   Updated: 2019/09/26 17:10:21 by cotis            ###   ########.fr       */
+/*   Created: 2020/10/14 15:34:18 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:34:18 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static int		get_nb_size(unsigned int nb)
+static size_t		ft_count(unsigned int n, size_t i)
 {
-	unsigned int	size;
-
-	size = 0;
-	while (nb >= 10)
+	if (n == 0)
+		return (++i);
+	while (n > 0)
 	{
-		nb /= 10;
-		++size;
+		n = n / 10;
+		i++;
 	}
-	return (size + 1);
+	return (i);
 }
 
-char			*ft_itoa(int nbr)
+static void			ft_addl(char *ch, size_t i, unsigned int nbr, int x)
 {
-	char			*str;
-	unsigned int	nb;
-	unsigned int	index;
-	unsigned int	size;
-
-	if (nbr < 0)
-		nb = (unsigned int)(nbr * -1);
-	else
-		nb = (unsigned int)nbr;
-	size = (unsigned int)get_nb_size(nb);
-	index = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
-		return (0);
-	if (nbr < 0 && (str[index] = '-'))
-		size++;
-	index = size - 1;
-	while (nb >= 10)
+	ch[i] = '\0';
+	i--;
+	if (nbr != 0)
 	{
-		str[index--] = (char)(nb % 10 + 48);
-		nb /= 10;
+		while (nbr > 0)
+		{
+			ch[i--] = (nbr % 10) + '0';
+			nbr = nbr / 10;
+		}
+		if (x == 1)
+			ch[i] = '-';
 	}
-	str[index] = (char)(nb % 10 + 48);
-	str[size] = '\0';
-	return (str);
+	else
+		ch[i] = '0';
+}
+
+char				*ft_itoa(int n)
+{
+	size_t			i;
+	int				x;
+	char			*ch;
+	unsigned int	nbr;
+
+	x = 0;
+	i = 0;
+	nbr = (unsigned int)n;
+	if (n < 0)
+	{
+		i++;
+		nbr = (unsigned int)n * -1;
+		x = 1;
+	}
+	i = ft_count(nbr, i);
+	if (!(ch = malloc(sizeof(char) * i + 1)))
+		return (NULL);
+	ft_addl(ch, i, nbr, x);
+	return (ch);
 }

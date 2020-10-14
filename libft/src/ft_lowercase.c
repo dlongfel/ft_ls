@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lowercase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 15:34:13 by dlongfel          #+#    #+#             */
-/*   Updated: 2020/10/14 15:34:14 by dlongfel         ###   ########.fr       */
+/*   Created: 2020/10/14 15:34:22 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:34:23 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int ch)
+void	ft_lowercase(char *str)
 {
-	if (ch >= 32 && ch <= 126)
-		return (1);
-	else
-		return (0);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
+	}
 }

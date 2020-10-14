@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_wordcounter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:56:00 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:56:01 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/07/03 13:57:23 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:57:24 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+int		ft_wordcounter(char *str)
 {
-	char	*res;
-	char	*a;
-	int		i;
+	int	i;
+	int	counter;
+	int	x;
 
-	if (!s || !f || ft_strlen((char *)s) > (ft_strlen((char *)s) + 1))
-		return (NULL);
-	res = (char *)malloc(ft_strlen((char *)s) + 1);
-	a = (char *)s;
-	if (!res)
-		return (NULL);
+	counter = 0;
 	i = 0;
-	while (a[i])
+	x = 0;
+	while (str[i] != '\0')
 	{
-		res[i] = f(a[i]);
-		i++;
+		while (str[i] && str[i] != ' ' && str[i] != '\n' && str[i] != '\t')
+		{
+			i++;
+			x = 1;
+		}
+		if (x == 1)
+		{
+			counter++;
+			x = 0;
+		}
+		if (str[i] != '\0')
+			i++;
 	}
-	res[i] = '\0';
-	return (res);
+	return (counter);
 }

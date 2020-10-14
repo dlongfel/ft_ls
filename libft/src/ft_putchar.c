@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cotis <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 19:15:13 by cotis             #+#    #+#             */
-/*   Updated: 2019/09/26 19:15:16 by cotis            ###   ########.fr       */
+/*   Created: 2020/07/03 13:54:17 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:54:18 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar(char c)
 {
-	ft_putchar_fd(c, 1);
+	write(1, &c, 1);
 }

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_uppercase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:56:00 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:56:01 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/07/03 13:57:18 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:57:18 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+void	ft_uppercase(char *str)
 {
-	char	*res;
-	char	*a;
-	int		i;
+	int	i;
 
-	if (!s || !f || ft_strlen((char *)s) > (ft_strlen((char *)s) + 1))
-		return (NULL);
-	res = (char *)malloc(ft_strlen((char *)s) + 1);
-	a = (char *)s;
-	if (!res)
-		return (NULL);
 	i = 0;
-	while (a[i])
+	while (str[i])
 	{
-		res[i] = f(a[i]);
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
 		i++;
 	}
-	res[i] = '\0';
-	return (res);
 }

@@ -3,38 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cotis <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 17:27:19 by cotis             #+#    #+#             */
-/*   Updated: 2019/09/26 17:27:31 by cotis            ###   ########.fr       */
+/*   Created: 2020/07/03 13:55:52 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:55:53 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *ap, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	size_t	res;
+	size_t	s;
 
-	i = 0;
-	while (dest[i] != '\0')
-		++i;
-	res = 0;
-	while (src[res] != '\0')
-		++res;
-	if (size <= i)
-		res += size;
-	else
-		res += i;
-	j = 0;
-	while (src[j] != '\0' && i + 1 < size)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (res);
+	s = ft_strlen(dst);
+	if (n > s)
+		ft_strncat(dst, ap, (n - s - 1));
+	else if (n < s)
+		return (n + ft_strlen(ap));
+	return (s + ft_strlen(ap));
 }

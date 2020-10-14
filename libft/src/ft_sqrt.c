@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:56:00 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:56:01 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/07/03 13:54:54 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:54:55 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+int			ft_sqrt(int nb)
 {
-	char	*res;
-	char	*a;
 	int		i;
+	int		j;
 
-	if (!s || !f || ft_strlen((char *)s) > (ft_strlen((char *)s) + 1))
-		return (NULL);
-	res = (char *)malloc(ft_strlen((char *)s) + 1);
-	a = (char *)s;
-	if (!res)
-		return (NULL);
 	i = 0;
-	while (a[i])
+	while (i <= nb)
 	{
-		res[i] = f(a[i]);
-		i++;
+		j = i * i;
+		if (j == nb)
+			return (i);
+		else if (j < nb)
+			i++;
+		else
+			return (0);
 	}
-	res[i] = '\0';
-	return (res);
+	return (0);
 }

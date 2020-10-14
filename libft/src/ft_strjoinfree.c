@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
+/*   By: dlongfel <dlongfel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 13:56:00 by richardbrac       #+#    #+#             */
-/*   Updated: 2020/07/03 13:56:01 by richardbrac      ###   ########.fr       */
+/*   Created: 2020/10/14 15:30:02 by dlongfel          #+#    #+#             */
+/*   Updated: 2020/10/14 15:30:03 by dlongfel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_strjoinfree(char **s1, char **s2, int key)
 {
 	char	*res;
-	char	*a;
-	int		i;
 
-	if (!s || !f || ft_strlen((char *)s) > (ft_strlen((char *)s) + 1))
+	if (s1 == NULL || s2 == NULL || key > 4 || key < 0)
 		return (NULL);
-	res = (char *)malloc(ft_strlen((char *)s) + 1);
-	a = (char *)s;
-	if (!res)
-		return (NULL);
-	i = 0;
-	while (a[i])
+	res = ft_strjoin(*s1, *s2);
+	if ((key % 2) == 1)
 	{
-		res[i] = f(a[i]);
-		i++;
+		free(*s1);
+		*s1 = NULL;
+		s1 = NULL;
 	}
-	res[i] = '\0';
+	if (key > 1)
+	{
+		free(*s2);
+		*s2 = NULL;
+		s2 = NULL;
+	}
 	return (res);
 }

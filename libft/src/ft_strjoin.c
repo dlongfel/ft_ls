@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cotis <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 19:20:16 by cotis             #+#    #+#             */
-/*   Updated: 2019/09/26 19:20:20 by cotis            ###   ########.fr       */
+/*   Created: 2020/07/03 13:55:48 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:55:48 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*result;
-	size_t	size;
+	char	*str;
+	char	*res;
+	size_t	len;
 
-	if (s1 && s2)
-		size = (size_t)(ft_strlen((char*)s1) + ft_strlen((char*)s2));
-	else if (s1)
-		size = (size_t)(ft_strlen((char*)s1));
-	else if (s2)
-		size = (size_t)(ft_strlen((char*)s2));
-	else
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	if (!(result = ft_memalloc(size)))
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if ((str = (char *)malloc(len + 1)) == NULL)
 		return (NULL);
-	if (s1)
-		result = ft_strcpy(result, (char*)s1);
-	else
-		result = ft_strcpy(result, (char*)s2);
-	if (s1 && s2)
-		result = ft_strcat(result, (char*)s2);
-	return (result);
+	res = str;
+	while (*s1)
+	{
+		*str = *s1;
+		str++;
+		s1++;
+	}
+	while (*s2)
+	{
+		*str = *s2;
+		str++;
+		s2++;
+	}
+	*str = '\0';
+	return (res);
 }

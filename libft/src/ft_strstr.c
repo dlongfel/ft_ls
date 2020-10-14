@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cotis <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: richardbrackswaide <richardbrackswaide@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/26 17:33:16 by cotis             #+#    #+#             */
-/*   Updated: 2019/09/26 17:33:19 by cotis            ###   ########.fr       */
+/*   Created: 2020/07/03 13:56:55 by richardbrac       #+#    #+#             */
+/*   Updated: 2020/07/03 13:56:56 by richardbrac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(const char *str, const char *to_find)
-{
-	unsigned int pos;
-	unsigned int i;
+#include "libft.h"
 
-	if (!*to_find)
-		return ((char*)str);
-	pos = 0;
-	while (str[pos] != '\0')
+char	*ft_strstr(const char *str1, const char *str2)
+{
+	int		i;
+	char	*a;
+	char	*b;
+
+	a = (char *)str2;
+	b = (char *)str1;
+	i = 0;
+	if (ft_strlen(a) == 0)
+		return ((char *)&b[0]);
+	while (b[i])
 	{
-		if (str[pos] == to_find[0])
+		if (b[i] == a[0])
 		{
-			i = 1;
-			while (to_find[i] != '\0' && str[pos + i] == to_find[i])
-				++i;
-			if (to_find[i] == '\0')
-				return ((char*)&str[pos]);
+			if ((ft_memcmp(&a[0], &b[i], (int)ft_strlen(a))) == 0)
+				return (&b[i]);
 		}
-		++pos;
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
